@@ -1,7 +1,7 @@
 Package: inshiny
 Type: Package
 Title: Compact Inline Widgets for 'shiny' Apps
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person("Nick", "Davies", email = "nicholas.davies@lshtm.ac.uk", role = c("aut", "cre"))
 Description: Provides a basic set of compact widgets for 'shiny' apps which
  occupy less space and can appear inline with surrounding text.
@@ -16,8 +16,8 @@ Config/testthat/edition: 3
 Imports: bslib, htmltools, rlang, shiny, stringr
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2025-09-04 00:34:30 UTC; nick
+Packaged: 2025-12-03 21:52:16 UTC; nick
 Author: Nick Davies [aut, cre]
 Maintainer: Nick Davies <nicholas.davies@lshtm.ac.uk>
 Repository: CRAN
-Date/Publication: 2025-09-09 14:00:13 UTC
+Date/Publication: 2025-12-03 22:10:02 UTC

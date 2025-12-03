@@ -36,7 +36,7 @@ inline_link = function(id, label, icon = NULL, meaning = label, accent = NULL)
             } else "inshiny-link")
 
     # Check structure is as expected
-    check_tags(widget, shiny::a(), "shiny::actionLink()")
+    check_tags(widget, shiny::a(any_tags()), "shiny::actionLink()")
 
     return (coalesce(widget))
 }
@@ -83,7 +83,7 @@ inline_button = function(id, label, icon = NULL, meaning = label, accent = NULL)
         `aria-label` = meaning)
 
     # Check structure is as expected
-    check_tags(widget, shiny::tags$button(), "shiny::actionButton()")
+    check_tags(widget, shiny::tags$button(any_tags()), "shiny::actionButton()")
 
     # Modify button
     widget = coalesce(widget)

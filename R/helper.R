@@ -21,6 +21,11 @@ noWS = function(html)
     return (html)
 }
 
+any_tags = function()
+{
+    shiny::tag("any", list())
+}
+
 # Confirm that an html object conforms to the same structure as a template.
 check_tags = function(html, template, name)
 {
@@ -38,6 +43,9 @@ check_tags = function(html, template, name)
 
 check_tags0 = function(html, template)
 {
+    # Allow skip
+    if (length(template) == 1 && template[[1]]$name == "any") return (TRUE)
+
     # Check number of tags
     tags_idx = which(vapply(html, function(t) inherits(t, "shiny.tag"), logical(1)))
     if (length(tags_idx) != length(template)) return (FALSE)
@@ -72,8 +80,12 @@ coalesce = function(html)
         ": ", paste(duplicated(names(html$attribs)), collapse = ", "))
     }
 
-    for (i in seq_along(html$children)) {
-        html$children[[i]] = coalesce(html$children[[i]])
+    for (i in rev(seq_along(html$children))) {
+        if (is.null(html$children[[i]])) {
+            html$children[[i]] = NULL # prune any NULL children
+        } else {
+            html$children[[i]] = coalesce(html$children[[i]])
+        }
     }
 
     return (html)
